@@ -1,10 +1,11 @@
 // --- Инициализация карты ---
 const map = new maplibregl.Map({
     container: 'map',
-    style: 'https://tiles.stadiamaps.com/styles/alidade_smooth_dark.json',
+    style: 'https://demotiles.maplibre.org/style.json', // свободный стиль, без ключа
     center: [37, 55],
-    zoom: 3
+    zoom: 5
 });
+
 
 let collegesData = [];
 let ugsData = [];
