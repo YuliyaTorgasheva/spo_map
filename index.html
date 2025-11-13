@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>Карта доступности СПО по муниципальным образованиям России</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- MapLibre GL JS -->
-<link href="https://unpkg.com/maplibre-gl@2.5.0/dist/maplibre-gl.css" rel="stylesheet"/>
-<script src="https://unpkg.com/maplibre-gl@2.5.0/dist/maplibre-gl.js"></script>
-
-<!-- Plotly -->
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Дашборд муниципалитетов</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body { margin:0; padding:0; font-family: sans-serif; }
+        #map { width: 60%; height: 600px; float: left; }
+        #info { width: 38%; float: right; padding: 10px; }
+        #chart { width: 100%; height: 300px; margin-top: 20px; }
+        #description { clear: both; padding: 20px; max-width: 1000px; margin: 0 auto; }
+        h2 { margin-top: 0; }
+        p { line-height: 1.5em; margin-bottom: 1em; }
+    </style>
 </head>
 <body>
-<header>
-    <h1>Муниципалитеты и СПО</h1>
-</header>
 
-<div id="map"></div>
-
-<div id="info-section">
+    <!-- Карта и панель информации -->
+    <div id="map"></div>
     <div id="info">
-        <h2>Выберите муниципалитет на карте</h2>
+        <h2>Выберите муниципалитет</h2>
+        <p>Информация появится здесь при клике на полигон.</p>
+        <div id="chart"></div>
     </div>
-    <div id="chart"></div>
-</div>
 
-<section id="explanation-section">
-    <h2>Пояснительный текст</h2>
-    <p>Здесь описание дашборда, методика подсчета СПО и UGS.</p>
-</section>
+    <!-- Пояснительный текст под дашбордом -->
+    <div id="description">
+        <h2>Обзор дашборда</h2>
+        <p>Этот дашборд показывает информацию о муниципальных районах России. На карте выделены полигоны муниципалитетов, которые можно кликнуть для получения подробной информации.</p>
 
-<script src="main.js"></script>
+        <h2>СПО и UGS</h2>
+        <p>Для каждого муниципалитета отображаются показатели СПО (среднее профессиональное образование) и UGS (учебные группы специальных направлений). Гистограмма визуализирует количество каждой категории.</p>
+
+        <h2>Использование</h2>
+        <p>Чтобы получить данные по конкретному муниципалитету, кликните на его полигон на карте. Информация отобразится справа вместе с графиком. Можно быстро сравнивать показатели между разными муниципалитетами.</p>
+
+        <h2>Данные</h2>
+        <p>Все данные загружаются из локальных файлов JSON и GeoJSON, которые находятся в папке <code>data/</code>. Это обеспечивает быстрое отображение без обращения к серверу.</p>
+    </div>
+
+    <script src="main.js"></script>
+
 </body>
 </html>
+
