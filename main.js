@@ -1,7 +1,7 @@
 // --- Инициализация карты ---
 const map = new maplibregl.Map({
     container: 'map',
-    style: 'https://tiles.stadiamaps.com/styles/alidade_smooth_dark.json', // полностью бесплатный, без ключа
+    style: 'https://demotiles.maplibre.org/style.json', // полностью бесплатный, без ключа
     center: [37, 55],
     zoom: 5
 });
