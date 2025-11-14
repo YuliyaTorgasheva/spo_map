@@ -235,7 +235,7 @@ Promise.all([
                 <div class="card-info">
                 <p><strong>Регион:</strong> ${props.region_name || '-'}</p>
                 <p><strong>territory_ud:</strong> ${props.territory_id}</p>
-                <p><strong>Индекс доступности СПО (число доступных УГС):</strong> ${ugsCount}</p>
+                <p><strong>Индекс доступности СПО (число доступных УГС из возможных):</strong> ${ugsCount}/42</p>
                 <p><strong>Население 15–25:</strong> ${props.population_15_25 || '-'}</p>
                 <p><strong>СПО, включая соседей до 50 км:</strong> ${props.unique_colleges_0_50 || 0}</p>
                 <p><strong>Доступно УГС, включая соседей до 50 км:</strong> ${ugsCount}</p>
