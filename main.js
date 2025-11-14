@@ -1,9 +1,9 @@
 // --- Инициализация карты ---
 const map = new maplibregl.Map({
     container: 'map',
-    style: 'https://demotiles.maplibre.org/style.json', // полностью бесплатный, без ключа
-    center: [37, 55],
-    zoom: 5
+    style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json', // полностью бесплатный, без ключа
+    center: [60, 55],
+    zoom: 2
 });
 
 
@@ -229,16 +229,21 @@ Promise.all([
 
             // --- Карточка ---
             let html = `
-                <h2>${props.municipal_district_name_short}</h2>
-                <p><strong>territory_ud:</strong> ${props.territory_id}</p>
-                <p><strong>Индекс доступности СПО:</strong> ${ugsCount}</p>
+            <div class="municipality-card">
+                <h2 class="card-title">${props.municipal_district_name_short}</h2>
+                <p class="municipality-type">${props.municipal_district_type || '-'}</p>
+                <div class="card-info">
                 <p><strong>Регион:</strong> ${props.region_name || '-'}</p>
-                <p><strong>Тип муниципалитета:</strong> ${props.municipal_district_type || '-'}</p>
+                <p><strong>territory_ud:</strong> ${props.territory_id}</p>
+                <p><strong>Индекс доступности СПО (число доступных УГС):</strong> ${ugsCount}</p>
                 <p><strong>Население 15–25:</strong> ${props.population_15_25 || '-'}</p>
                 <p><strong>СПО, включая соседей до 50 км:</strong> ${props.unique_colleges_0_50 || 0}</p>
                 <p><strong>Доступно УГС, включая соседей до 50 км:</strong> ${ugsCount}</p>
-                ${ugsPresenceHTML}
+                </div>
+                <div class="ugs-presence">${ugsPresenceHTML}</div>
+            </div>
             `;
+
 
             // --- ТАБЛИЦА КОЛЛЕДЖЕЙ (ТОЛЬКО ЭТО, НИЧЕГО БОЛЬШЕ НЕ МЕНЯЮ) ---
             const allTids = [
@@ -381,7 +386,7 @@ Promise.all([
                 <div style="width:20px;height:12px;background:#006d2c;margin-right:5px;"></div> <span>>37</span>
             </div>
         `;
-        document.body.appendChild(legend);
+        document.getElementById('map').appendChild(legend);
 
     });
 });
@@ -400,3 +405,4 @@ document.addEventListener("click", (e) => {
         dropdown.classList.remove("show");
     }
 });
+
